@@ -1,16 +1,6 @@
 name: Backend CI/CD
 
-on: 
-  push:
-   branches: [main, develop]
-   paths: 
-    - 'backend/**'
-    - '.github/workflows/backend-ci.yml'
-  
-  pull_request:
-    branches: [ main, develop ]
-    paths: 
-      - 'backend/**'
+on: [push, pull_request]
 
 jobs: 
   test:
@@ -25,12 +15,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
-          cache-dependency-path: backend/package-lock.json
 
       - name: Install dependencies
         working-directory: ./backend
-        run: npm ci
+        run: npm install
 
       - name: Run tests
         working-directory: ./backend 
