@@ -23,7 +23,8 @@ const startServer = async () => {
 
 // Handle shutdown gracefully
 const shutdown = () => {
-    logger.info('\n Shutting down gracefully...');
+    console.log("\x1b[1;35m\n Shutting down gracefully...\x1b[0m");
+    //logger.info('\n Shutting down gracefully...');
     process.exit(0);
 };
 
