@@ -1,6 +1,7 @@
 import dotenv from 'dotenv';
 import app from './app.js';
 import { connectSupabase } from '../config/supabase.js';
+import { logger } from '../utils/logger.js';
 
 dotenv.config();
 
@@ -11,18 +12,18 @@ const startServer = async () => {
         connectSupabase();
 
         app.listen(PORT, () => {
-            console.log(`Server running on port ${PORT}`);
-            console.log(`Health check: http://localhost:${PORT}/health`);
+            logger.success(`Server running on port ${PORT}`);
+            logger.info(`Health check: http://localhost:${PORT}/health`);
         })
     } catch (error) {
-        console.error('Failed to start server:', error);
+        logger.error('Failed to start server:', error);
         process.exit(1);
     }
 };
 
 // Handle shutdown gracefully
 const shutdown = () => {
-    console.log('\n Shutting down gracefully...');
+    logger.info('\n Shutting down gracefully...');
     process.exit(0);
 };
 

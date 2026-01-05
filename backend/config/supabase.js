@@ -1,4 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
+import { logger } from '../utils/logger.js';
 
 let supabase = null;
 
@@ -13,12 +14,12 @@ export const connectSupabase = () => {
 
         supabase = createClient(supabaseUrl, supabaseKey);
 
-        console.log('Supabase client initialized');
+        logger.success('Supabase client initialized');
         //console.log(`URL: ${supabaseUrl}`)
 
         return supabase
     } catch (error) {
-        console.error('Supabase connection error:', error.message);
+        logger.error('Supabase connection error:', error.message);
         process.exit(1);
     }
 };
@@ -33,7 +34,7 @@ export const getSupabase = () => {
 
 export const disconnectSupabase = () => {
     if (supabase) {
-        console.log('Supabase client closed');
+        logger.warn('Supabase client closed');
         supabase = null;
     }
 };
