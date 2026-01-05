@@ -30,7 +30,7 @@ export const getAllTasks = async (req, res) => {
 // Get task by ID
 export const getTaskById = async (req, res) => {
     try {
-        const task = await Task.findByID(req.param.id);
+        const task = await Task.findById(req.params.id);
 
         if (!task) {
             return res.status(404).json({
@@ -88,7 +88,7 @@ export const updateTask = async (req, res) => {
     try {
         const { title, description, completed } = req.body;
 
-        const task = await Task.update(req.param.id, {
+        const task = await Task.update(req.params.id, {
             title,
             description,
             completed,
@@ -97,7 +97,7 @@ export const updateTask = async (req, res) => {
         if (!task) {
             return res.status(404).json({
                 success: false,
-                message: 'Taks not found',
+                message: 'Task not found',
             });
         }
 
@@ -126,7 +126,7 @@ export const updateTask = async (req, res) => {
 // Delete task
 export const deleteTask = async (req, res) => {
     try {
-        const task = await Task.delete(req.param.id);
+        const task = await Task.delete(req.params.id);
 
         if (!task) {
             return res.status(404).json({
