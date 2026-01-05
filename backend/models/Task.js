@@ -1,4 +1,4 @@
-import { getSupabase } from "../config/supabase";
+import { getSupabase } from "../config/supabase.js";
 
 class Task {
     // Get all tasks

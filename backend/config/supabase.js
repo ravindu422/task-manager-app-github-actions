@@ -14,7 +14,7 @@ export const connectSupabase = () => {
         supabase = createClient(supabaseUrl, supabaseKey);
 
         console.log('Supabase client initialized');
-        console.log(`URL: ${supabaseUrl}`)
+        //console.log(`URL: ${supabaseUrl}`)
 
         return supabase
     } catch (error) {

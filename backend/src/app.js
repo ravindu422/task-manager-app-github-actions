@@ -1,8 +1,8 @@
 import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
-import taskRoutes from '../routes/taskRoutes';
-import { errorHandler, notFound } from '../middleware/errorHandler';
+import { errorHandler, notFound } from '../middleware/errorHandler.js';
+import router from '../routes/taskRoutes.js';
 
 const app = express();
 
@@ -22,7 +22,7 @@ app.get('/health', (req, res) => {
 });
 
 // API routes
-app.use('api/tasks', taskRoutes);
+app.use('api/tasks', router);
 
 // Error handling
 app.use(notFound);
