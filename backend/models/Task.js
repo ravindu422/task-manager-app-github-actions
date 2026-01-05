@@ -21,7 +21,7 @@ class Task {
     }
 
     // Find task by ID
-    static async findByID(id) {
+    static async findById(id) {
         const supabase = getSupabase();
 
         const { data, error } = await supabase
@@ -88,7 +88,7 @@ class Task {
         }
 
         if (Object.keys(updates).length === 0) {
-            return this.findByID(id);
+            return this.findById(id);
         }
 
         const supabase = getSupabase();
