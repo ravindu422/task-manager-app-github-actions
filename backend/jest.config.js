@@ -11,9 +11,6 @@ export default {
     '**/*.test.js',
   ],
   transform: {},
-  moduleNameMapper: {
-    '^(\\.{1,2}/.*)\\.js$': '$1',
-  },
   testTimeout: 10000,
   clearMocks: true,
   resetMocks: true,
