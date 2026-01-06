@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from 'axios';
 
 const API_URL = '/api/tasks';
 
@@ -27,13 +27,13 @@ export const taskService = {
     },
 
     updateTask: async (id, taskData) => {
-        const response = await api.delete(`${id}`, taskData);
-        return response.data;
+        const response = await api.put(`/${id}`, taskData);  
+        return response.data.data;  
     },
 
     deleteTask: async (id) => {
         const response = await api.delete(`/${id}`); 
-        return response.data;
+        return response.data.data;  
     }
 };
 

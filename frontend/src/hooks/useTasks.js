@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import { useState } from "react"
+import { useEffect, useState } from "react";
 import taskService from "../services/taskService";
 
 export const useTasks = () => {
@@ -35,9 +34,9 @@ export const useTasks = () => {
     const updateTask = async (id, taskData) => {
         setError(null);
         try {
-            const updatedTask = await taskService.updatTask(id, taskData);
-            setTasks(tasks.map(task => tasks.id === id ? updatedTask : task));
-            return updateTask;
+            const updatedTask = await taskService.updateTask(id, taskData);  
+            setTasks(tasks.map(task => task.id === id ? updatedTask : task));  
+            return updatedTask;
         } catch (err) {
             setError(err.message);
             throw err;
@@ -53,10 +52,12 @@ export const useTasks = () => {
             setError(error.message);
             throw error;
         }
-    }
+    };
 
-    const toggleTaskComplete = async (task) => {
-        return updateTask(task.id, { ...task, completed: !task.completed });
+    const toggleTaskComplete = async (id) => {  
+        const task = tasks.find(t => t.id === id);  
+        if (!task) return;  
+        return updateTask(id, { ...task, completed: !task.completed });  
     };
 
     useEffect(() => {

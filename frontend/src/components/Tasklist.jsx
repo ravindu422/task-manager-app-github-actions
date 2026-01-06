@@ -17,19 +17,18 @@ function TaskList({ tasks, onToggle, onDelete, filter }) {
             </div>
         );
     }
+    return (
+        <div>
+            {filteredTasks.map(task => (
+                <TaskItem
+                    key={task.id}
+                    task={task}
+                    onToggle={onToggle}
+                    onDelete={onDelete}
+                />
+            ))}
+        </div>
+    )
 }
-
-return (
-    <div>
-        {filteredTasks.map(task => (
-            <TaskItem
-                key={task.id}
-                task={task}
-                onToggle={onToggle}
-                onDelete={onDelete}
-            />
-        ))}
-    </div>
-)
 
 export default TaskList;
